@@ -105,7 +105,7 @@ int main(int argc, char** argv)
    }
 
    // initialize the block codes for the DS1991
-   initBlockCodes();
+    ps_initBlockCodes();
 
    // for the first secret, id and data
    if(!ConvertPS(portnum,MT,0,length))
@@ -295,14 +295,14 @@ SMALLINT ConvertPS(int portnum,uchar *MT, int key, int len)
    {
       owSerialNum(portnum,&AllSN[i][0],FALSE);
 
-      if(!writePassword(portnum,key,oldName,ID,secret))
+      if(!ps_writePassword(portnum, key, oldName, ID, secret))
       {
          return FALSE;
       }
 
-      if(writeScratchpad(portnum,0,tempMT,64))
+      if(ps_writeScratchpad(portnum, 0, tempMT, 64))
       {
-         if(readScratchpad(portnum,data))
+         if(ps_readScratchpad(portnum, data))
          {
             for(j=0;j<64;j++)
             {
@@ -316,7 +316,7 @@ SMALLINT ConvertPS(int portnum,uchar *MT, int key, int len)
          else
             return FALSE;
 
-         if(!copyScratchpad(portnum,key,secret,8))
+         if(!ps_copyScratchpad(portnum, key, secret, 8))
             return FALSE;
 
 /*  The write sub key is commented out so the
@@ -332,7 +332,7 @@ SMALLINT ConvertPS(int portnum,uchar *MT, int key, int len)
       else
       {
 */
-         if(!readSubkey(portnum,&data[0],key,secret))
+         if(!ps_readSubkey(portnum, &data[0], key, secret))
          {
             return FALSE;
          }

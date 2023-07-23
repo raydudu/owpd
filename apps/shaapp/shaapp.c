@@ -55,7 +55,7 @@ int VERBOSE=0;
 // FIPS-180 SHA routine is omitted (which only involves the addition of
 // constant values).
 //
-int main(short argc, char **argv)
+int main(int argc, char **argv)
 {
    char msg[200];
    int portnum = 0;

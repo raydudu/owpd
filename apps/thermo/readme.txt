@@ -26,12 +26,12 @@ usage: thermoms 1wire_net_name </Fahrenheit>
 
 The Thermochron has the following features:
 
-   -Temperature range -40°C to 85°C (-40°F to 185°F) 
+   -Temperature range -40ï¿½C to 85ï¿½C (-40ï¿½F to 185ï¿½F) 
    -Selectable starting offset (0 minutes to 46 days) 
    -Sample interval (1 to 255 minutes) 
    -Alarms and capture registers triggered when outside specified range 
    -2048 time-stamped temperature readings with optional data wrap 
-   -Long-term temperature histogram with 2°C resolution in 56 bins 
+   -Long-term temperature histogram with 2ï¿½C resolution in 56 bins 
    -4096 bits of general-purpose read/write nonvolatile memory 
 
 Required on the command line is the 1-Wire port name:

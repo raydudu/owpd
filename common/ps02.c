@@ -41,7 +41,7 @@ uchar pscodes[9][8];
  * @param codes a 2 dimensional array [9][8] to contain the
  * codes.
  */
-void initBlockCodes()
+void ps_initBlockCodes()
 {
    pscodes[8][0] = 0x56;            //ALL 64 bytes address 0x00 to 0x3F
    pscodes[8][1] = 0x56;
@@ -131,7 +131,7 @@ void initBlockCodes()
  * return:  TRUE  if the write worked
  *          FALSE if there was an error in writing
  */
-SMALLINT writeScratchpad (int portnum, int addr, uchar *data, int len)
+SMALLINT ps_writeScratchpad (int portnum, int addr, uchar *data, int len)
 {
    int   dataRoom,i;
    uchar buffer[96];
@@ -199,7 +199,7 @@ SMALLINT writeScratchpad (int portnum, int addr, uchar *data, int len)
  * return   TRUE  if the data was read without an error
  *
  */
-SMALLINT readScratchpad(int portnum, uchar *data)
+SMALLINT ps_readScratchpad(int portnum, uchar *data)
 {
    uchar buffer[96];
    int i;
@@ -251,7 +251,7 @@ SMALLINT readScratchpad(int portnum, uchar *data)
  *
  * return       TRUE  if the copy scratchpad was successful.
  */
-SMALLINT copyScratchpad(int portnum, int key, uchar *passwd, int blockNum)
+SMALLINT ps_copyScratchpad(int portnum, int key, uchar *passwd, int blockNum)
 {
    uchar buffer[96];
    int i;
@@ -317,7 +317,7 @@ SMALLINT copyScratchpad(int portnum, int key, uchar *passwd, int blockNum)
  *
  * return:    TRUE  if reading the subkey was successful.
  */
-SMALLINT readSubkey(int portnum, uchar *data, int key, uchar *passwd)
+SMALLINT ps_readSubkey(int portnum, uchar *data, int key, uchar *passwd)
 {
    uchar buffer[96];
    int i;
@@ -383,8 +383,8 @@ SMALLINT readSubkey(int portnum, uchar *data, int key, uchar *passwd)
  *
  * return     TRUE if the write was successful  
  */
-SMALLINT writePassword(int portnum, int key, uchar *oldName, 
-                       uchar *newName, uchar *newPasswd)
+SMALLINT ps_writePassword(int portnum, int key, uchar *oldName,
+                          uchar *newName, uchar *newPasswd)
 {
    uchar buffer[96];
    int   i;
@@ -454,8 +454,8 @@ SMALLINT writePassword(int portnum, int key, uchar *oldName,
  *
  * return    TRUE if the write was successful
  */
-SMALLINT writeSubkey (int portnum, int key, int addr, uchar *passwd,
-                      uchar *data, int len)
+SMALLINT ps_writeSubkey (int portnum, int key, int addr, uchar *passwd,
+                         uchar *data, int len)
 {
    uchar buffer[96];
    int i;

@@ -40,7 +40,6 @@
 #define MAXDEVICES         15
 
 // External subroutines
-extern short ReadSwitch12(int,int);
 extern int SetSwitch12(int,uchar *,SwitchProps);
 extern int SwitchStateToString12(int,char *);
 extern SMALLINT owAccess(int);

@@ -129,17 +129,6 @@ typedef struct
 
 } ThermoStateType;
 
-// type structure to holde time/date 
-typedef struct          
-{
-     ushort  second;
-     ushort  minute;
-     ushort  hour;
-     ushort  day;
-     ushort  month;
-     ushort  year;
-} timedate;
-
 // structure to hold each state in the StateMachine
 typedef struct
 {
@@ -201,8 +190,6 @@ int ReadThermoStatus(int,uchar *,ThermoStateType *,FILE *);
 int MissionThermo(int,uchar *,ThermoStateType *,FILE *);
 static int RunThermoScript(int,ThermoStateType *,ThermoScript script[],FILE *fp);
 void MissionStatusToString(MissionStatus *,int,char *);
-void  SecondsToDate(timedate *, ulong);
-ulong DateToSeconds(timedate *);
 uchar BCDToBin(uchar);
 void  InterpretStatus(MissionStatus *);
 void  FormatMission(MissionStatus *);

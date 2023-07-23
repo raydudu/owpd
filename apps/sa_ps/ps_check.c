@@ -316,7 +316,7 @@ SMALLINT CheckPS(int portnum,uchar *SNum,uchar *MT,int key, uchar *data)
 
    owSerialNum(portnum,SNum,FALSE);
 
-   if(!readSubkey(portnum,data,key,pass))
+   if(!ps_readSubkey(portnum, data, key, pass))
    {
       return FALSE;
    }

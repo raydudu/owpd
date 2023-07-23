@@ -65,7 +65,7 @@ set(SRCS
         shadebit.c
         shaib.c
         shaib.h
-        sprintf.c
+ #       sprintf.c
         swt1C.c
         swt1C.h
         swt1f.c

@@ -59,15 +59,15 @@
 
 
 // functions
-void initBlockCodes(void);
-SMALLINT writeScratchpad (int portnum, int addr, uchar *data, int len);
-SMALLINT readScratchpad(int portnum, uchar *data);
-SMALLINT copyScratchpad(int portnum, int key, uchar *passwd, int blockNum);
-SMALLINT readSubkey(int portnum, uchar *data, int key, uchar *passwd);
-SMALLINT writePassword(int portnum, int key, uchar *oldName, 
-                       uchar *newName, uchar *newPasswd);
-SMALLINT writeSubkey (int portnum, int key, int addr, uchar *passwd,
-                      uchar *data, int len);
+void ps_initBlockCodes(void);
+SMALLINT ps_writeScratchpad (int portnum, int addr, uchar *data, int len);
+SMALLINT ps_readScratchpad(int portnum, uchar *data);
+SMALLINT ps_copyScratchpad(int portnum, int key, uchar *passwd, int blockNum);
+SMALLINT ps_readSubkey(int portnum, uchar *data, int key, uchar *passwd);
+SMALLINT ps_writePassword(int portnum, int key, uchar *oldName,
+                          uchar *newName, uchar *newPasswd);
+SMALLINT ps_writeSubkey (int portnum, int key, int addr, uchar *passwd,
+                         uchar *data, int len);
 
 
 

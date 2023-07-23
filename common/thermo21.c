@@ -34,7 +34,8 @@
 //                         Y2K fix.
 
 #include "ownet.h"
-#include "thermo21.h"   
+#include "thermo21.h"
+#include "time04.h"
 #include <time.h>
 #include <stdio.h>
 
@@ -1276,70 +1277,6 @@ void DebugToString(MissionStatus *mstatus, TempAlarmEvents *alarm,
 uchar BCDToBin(uchar bcd)
 {
    return (((bcd & 0xF0) >> 4) * 10) + (bcd & 0x0F);
-}
-
-
-//--------------------------------------------------------------------------
-// Take a 4 byte long string and convert it into a timedata structure.
-//
-static int dm[] = { 0,0,31,59,90,120,151,181,212,243,273,304,334,365 };
-
-void SecondsToDate(timedate *td, ulong x)
-{
-   short tmp,i,j;
-   ulong y;
-   
-   // check to make sure date is not over 2070 (sanity check)
-   if (x > 0xBBF81E00L)
-      x = 0;
-   
-   y = x/60;  td->second = (ushort)(x-60*y);
-   x = y/60;  td->minute = (ushort)(y-60*x);
-   y = x/24;  td->hour   = (ushort)(x-24*y);
-   x = 4*(y+731);  td->year = (ushort)(x/1461);
-   i = (int)((x-1461*(ulong)(td->year))/4);  td->month = 13;
-   
-   do
-   {
-      td->month -= 1;
-      tmp = (td->month > 2) && ((td->year & 3)==0) ? 1 : 0;
-      j = dm[td->month]+tmp;
-   
-   } while (i < j);
-   
-   td->day = i-j+1;
-   
-   // slight adjustment to algorithm 
-   if (td->day == 0) 
-      td->day = 1;
-   
-   td->year = (td->year < 32)  ? td->year + 68 + 1900: td->year - 32 + 2000;
-}
-
-//--------------------------------------------------------------------------
-// DateToSeconds takes a time/date structure and converts it into the 
-// number of seconds since 1970
-//
-ulong DateToSeconds(timedate *td)
-{
-   ulong Sv,Bv,Xv;
-
-   // convert the date/time values into the 5 byte format used in the touch 
-   if (td->year >= 2000) 
-      Sv = td->year + 32 - 2000;
-   else 
-      Sv = td->year - 68 - 1900;
-
-   if ((td->month > 2) && ( (Sv & 3) == 0))
-     Bv = 1;
-   else
-     Bv = 0;
-
-   Xv = 365 * (Sv-2) + (Sv-1)/4 + dm[td->month] + td->day + Bv - 1;
-
-   Xv = 86400 * Xv + (ulong)(td->second) + 60*((ulong)(td->minute) + 60*(ulong)(td->hour));
-
-   return Xv;
 }
 
 //--------------------------------------------------------------------------

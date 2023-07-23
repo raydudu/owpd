@@ -52,7 +52,7 @@ int menuSelect(uchar *SNum);
 //----------------------------------------------------------------------
 //  This is the Main routine for swtmain1c
 //
-int main(short argc, char **argv)
+int main(int argc, char **argv)
 {
    char msg[200];
    uchar data[256];

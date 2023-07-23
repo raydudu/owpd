@@ -44,7 +44,7 @@ int VERBOSE=0;
 //----------------------------------------------------------------------
 //  This is the Main routine for swtmulti
 //
-int main(short argc, char **argv)
+int main(int argc, char **argv)
 {
    char msg[200];
    int portnum = 0;
