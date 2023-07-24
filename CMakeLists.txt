@@ -16,7 +16,13 @@ else ()
 endif ()
 
 
-add_library(w1 ALIAS ${W1_MASTER_LIB})
+if (APPLE)
+    # Workaround to allow RESCAN feature on MacOS
+    set(CMAKE_LINK_GROUP_USING_RESCAN "LINKER: " "LINKER: ")
+    set(CMAKE_LINK_GROUP_USING_RESCAN_SUPPORTED TRUE)
+endif ()
+add_library(w1 INTERFACE)
+target_link_libraries(w1 INTERFACE $<LINK_GROUP:RESCAN,${W1_MASTER_LIB} w1common>)
 
 add_subdirectory(apps/atodtst)
 add_subdirectory(apps/counter)

@@ -89,3 +89,4 @@ set(SRCS
 
 add_library(w1common STATIC ${SRCS})
 target_include_directories(w1common PUBLIC .)
+target_link_libraries(w1common PUBLIC m)
