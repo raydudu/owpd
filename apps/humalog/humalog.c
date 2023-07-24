@@ -75,7 +75,7 @@ int main(int argc, char **argv)
    {
       sprintf(msg,"1-Wire Net name required on command line!\n"
                   " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-                  "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+                  "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       printf("%s\n",msg);
       return 0;
    }
@@ -120,7 +120,7 @@ int main(int argc, char **argv)
                   if(settings.highTempAlarm)
                   {
                      printf("Enter the temperature for the high alarm.\n");
-                     settings.highTemp = getFloat(-40.0,125.0);
+                     settings.highTemp = getFloat(-40.0f,125.0f);
                   }
 
                   printf("Do you want to set a low temperature alarm? (T/F)\n");
@@ -130,9 +130,9 @@ int main(int argc, char **argv)
                   {
                      printf("Enter the temperature for the low alarm.\n");
                      if(settings.highTempAlarm)
-                        settings.lowTemp = getFloat(-40.0,settings.highTemp);
+                        settings.lowTemp = getFloat(-40.0f,settings.highTemp);
                      else
-                        settings.lowTemp = getFloat(-40.0,125.0);
+                        settings.lowTemp = getFloat(-40.0f,125.0f);
                   }
 
                   printf("Do you want to start mission upon a temperature alarm? (T/F)\n");
@@ -153,7 +153,7 @@ int main(int argc, char **argv)
                   if(settings.highDataAlarm)
                   {
                      printf("Enter the integer high alarm percentage.\n");
-                     settings.highData = getFloat(0.0,100.0);
+                     settings.highData = getFloat(0.0f,100.0f);
                   }
 
                   printf("Do you want to set a low data alarm? (T/F)\n");
@@ -162,7 +162,7 @@ int main(int argc, char **argv)
                   if(settings.lowDataAlarm)
                   {
                      printf("Enter the integer low alarm percentage.\n");
-                     settings.lowData = getFloat(0.0,settings.highData);
+                     settings.lowData = getFloat(0.0f,settings.highData);
                   }
 
                   printf("Do you want the data recorded at high resolution? (T/F)\n");

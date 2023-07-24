@@ -1279,7 +1279,6 @@ char *getExtraInfoDescEPROM(SMALLINT bank, uchar *SNum)
    {
       case 0x09:
          return " ";
-         break;
 
       case 0x0B:
          if((bank > 0) && (bank < 5))
@@ -1430,7 +1429,7 @@ SMALLINT isPageLocked(SMALLINT bank, int portnum, uchar *SNum, int page)
    nbyt  = (index >> 3);
    nbit  = index - (nbyt << 3);
 
-   return !(((read_buf[nbyt] >> nbit) & 0x01) == 0x01);
+   return ((read_buf[nbyt] >> nbit) & 0x01) != 0x01;
 }
 
 /**

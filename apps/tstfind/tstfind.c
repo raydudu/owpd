@@ -49,7 +49,7 @@
 int main(int argc, char **argv)
 {
    int rslt,cnt;
-   int portnum=0;
+   int portnum;
    uchar SNum[8];
 
    // check for required port name
@@ -57,7 +57,7 @@ int main(int argc, char **argv)
    {
       printf("1-Wire Net name required on command line!\n"
              " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-             "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+             "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       exit(1);
    }
 
@@ -105,7 +105,6 @@ int main(int argc, char **argv)
    // release the 1-Wire Net
    owRelease(portnum);
    printf("Closing port %s.\n", argv[1]);
-   exit(0);
 
    return 0;
 }

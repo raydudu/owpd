@@ -34,7 +34,6 @@
 // --------------------------------------------------------------------------
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
 #include "ownet.h"
@@ -379,7 +378,7 @@ int SetupWet(int portnum, WeatherStruct *wet, int nor)
 
    wet->north = nor;
 
-   if((wet->ds2401 == NULL) || wet->weather_b)
+   if(wet->weather_b)
    {
       wet->weather_b = TRUE;
       wet->weather_a = FALSE;
@@ -558,8 +557,8 @@ int ReadWet(int portnum, WeatherStruct *wet, float *temp, int *dir, double *revo
    end_time = msGettick();
 
    // calculate the wind speed based on the revolutions per second
-   *revol = (((end_count - start_count) * 1000.0) /
-              (end_time - start_time)) / 2.0;
+   *revol = (((end_count - start_count) * 1000.0f) /
+              (end_time - start_time)) / 2.0f;
 
    return ret;
 }

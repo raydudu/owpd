@@ -64,7 +64,7 @@ int main(int argc, char **argv)
               "  - Thermochron download on the 1-Wire Net port\n"
               "  - 1wire_net_port required port name\n"
               "    example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" \n"
-              "    (Linux DS2480),\"{1,5}\" (Win32 TMEX)\n"
+              "    (Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n"
               "  - <output_filename> optional output filename\n"
               "  - </Fahrenheit> optional Fahrenheit mode (default Celsius)\n"
               "  - version 2.00\n",1);

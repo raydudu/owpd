@@ -65,7 +65,7 @@ int main(int argc, char **argv)
               "  - Thermochron configuration on the 1-Wire Net port\n"
               "  - 1wire_net_port required port name\n"
               "    example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" \n"
-              "    (Linux DS2480),\"{1,5}\" (Win32 TMEX)\n"
+              "    (Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n"
               "  - </Fahrenheit> optional Fahrenheit mode (default Celsius)\n"
               "  - version 2.00\n",1);
 
@@ -153,7 +153,6 @@ int main(int argc, char **argv)
    owRelease(portnum);
    printf("\nClosing port %s.\n", argv[1]);
    printf("End program normally\n");
-   exit(0);
 
    return 0;
 }

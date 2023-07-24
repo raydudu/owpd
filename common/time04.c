@@ -33,8 +33,6 @@
 
 #include "ownet.h"
 #include <time.h>
-#include <stdio.h>
-#include <memory.h>
 #include "mbscr.h"
 #include "mbnv.h"
 #include "time04.h"
@@ -48,31 +46,6 @@
 #endif
 
 // Function Prototypes
-
-// The "getters" 
-SMALLINT getRTC(int, uchar *, timedate *);
-SMALLINT getRTCA(int, uchar *, timedate *);
-SMALLINT getControlRegisterBit(int, uchar *, int, SMALLINT *);
-SMALLINT getStatusRegisterBit(int, uchar *, int, SMALLINT *);
-
-// The "setters"
-SMALLINT setRTC(int, uchar *, ulong, SMALLINT);
-SMALLINT setRTCFromPC(int, uchar *, SMALLINT);
-SMALLINT setOscillator(int, uchar *, SMALLINT);
-SMALLINT setRTCA(int, uchar *, ulong, SMALLINT);
-SMALLINT setRTCAFromPCOffset(int, uchar *, ulong, SMALLINT);
-SMALLINT setRTCAEnable(int, uchar *, SMALLINT);
-SMALLINT setWriteProtectionAndExpiration(int, uchar *, SMALLINT, SMALLINT);
-SMALLINT setControlRegister(int, uchar *, SMALLINT, SMALLINT, SMALLINT, SMALLINT, SMALLINT, SMALLINT, SMALLINT, SMALLINT);
-SMALLINT setStatusRegister(int, uchar *, SMALLINT, SMALLINT, SMALLINT);
-
-// The "time conversion" functions
-void getPCTime(timedate *);
-void SecondsToDate(timedate *, ulong);
-ulong DateToSeconds(timedate *);
-
-// Utility functions
-ulong uchar_to_bin(uchar *, int);
 
 //----------------------------------------------------------------------
 // Retrieves the local time from the 1-Wire Real-Time Clock (RTC)

@@ -48,15 +48,15 @@ static const long KTN[4] = { 0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6 };
 
 int main(int argc, char** argv)
 {
-   int    i = 0,j;
-   int    portnum = 0;
+   int    i,j;
+   int    portnum;
    int    length;
    int    random;
    uchar  data[64];
    uchar  MT[64];
    uchar  falsMT[64];
    long   test_time;
-   int    NumDevices = 0;
+   int    NumDevices;
    uchar   AllSN[MAXDEVICES][8];
 
    puts("\nStarting Software Authentication checking Application\n");
@@ -66,7 +66,7 @@ int main(int argc, char** argv)
    {
       printf("1-Wire Net name required on command line!\n"
              " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-             "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+             "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       exit(1);
    }
 
@@ -102,7 +102,7 @@ int main(int argc, char** argv)
 
    test_time = msGettick() + 3000;
 
-   for(;;)
+    while (!key_abort())
    {
       NumDevices = FindDevices(portnum,AllSN,0x02,MAXDEVICES);
 
@@ -336,13 +336,9 @@ SMALLINT CheckPS(int portnum,uchar *SNum,uchar *MT,int key, uchar *data)
    {
       return TRUE;
    }
-   else
-   {
-      OWERROR(OWERROR_CRC_FAILED);
-      return FALSE;
-   }
 
-   return TRUE;
+   OWERROR(OWERROR_CRC_FAILED);
+   return FALSE;
 }
 
 /**

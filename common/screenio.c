@@ -41,13 +41,8 @@
 // defines
 #define MAXLINE 16
 
-// External functions
-extern void msDelay(int);
-
 // local function prototypes
-void output_status(int, char *);
 void reset_screen(void);
-int available_screen(int);
 void ClearScreen(int);
 
 // globals
@@ -103,7 +98,7 @@ void output_status(int level, char *st)
 //
 int available_screen(int lines)
 {
-  return !((current_line + lines) > MAXLINE);
+  return (current_line + lines) <= MAXLINE;
 }
 
 //--------------------------------------------------------------------------

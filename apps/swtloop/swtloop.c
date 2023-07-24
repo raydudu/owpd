@@ -70,7 +70,7 @@ int main(int argc, char **argv)
    {
       printf("1-Wire Net name required on command line!\n"
              " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-             "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+             "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       exit(1);
    }
 

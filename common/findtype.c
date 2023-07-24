@@ -51,13 +51,13 @@
 //
 SMALLINT FindDevices(int portnum, uchar FamilySN[][8], SMALLINT family_code, int MAXDEVICES)
 {
-   int NumDevices=0;
+   int NumDevices;
 
    // find the devices
    // set the search to first find that family code
    owFamilySearchSetup(portnum,family_code);
 
-   // loop to find all of the devices up to MAXDEVICES
+   // loop to find all the devices up to MAXDEVICES
    NumDevices = 0;
    do
    {

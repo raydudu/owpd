@@ -49,7 +49,6 @@ SMALLINT in_overdrive[MAX_PORTNUM];
 SMALLINT FindCoprSHA(SHACopr* copr, FileEntry* fe)
 {
    SMALLINT FoundCopr = FALSE;
-   int data;
 
    // now get all the SHA iButton parts until we find
    // one that has the right file on it.
@@ -71,7 +70,7 @@ SMALLINT FindCoprSHA(SHACopr* copr, FileEntry* fe)
                if(!owCloseFile(copr->portnum, copr->devAN, handle))
                   return FALSE;
                if(raw != 0)
-                  data = GetCoprFromRawData(copr, raw, length);
+                   GetCoprFromRawData(copr, raw, length);
                FoundCopr = TRUE;
             }
 

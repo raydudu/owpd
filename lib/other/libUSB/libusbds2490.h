@@ -238,6 +238,7 @@ typedef struct _STATUS_PACKET
    uchar   CommResultCodes[16];
 } STATUS_PACKET, *PSTATUS_PACKET;
 
+#pragma pack(pop)
 
 //
 // STATUS FLAGS

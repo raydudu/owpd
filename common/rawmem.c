@@ -29,7 +29,6 @@
 //
 
 // Include Files
-#include <stdio.h>
 #include "rawmem.h"
 #include "pw77.h"
 #include "mbnv.h"
@@ -1374,15 +1373,12 @@ char *owGetBankDescription(SMALLINT bank, uchar *SNum)
 
       case 0x33: case 0xB3:  //SHAEE Memory Bank
          return getBankDescriptionSHAEE(bank,SNum);
-         break;
 
       case 0x2D:  //DS2431 Memory Bank
          return getBankDescriptionEEWP(bank,SNum);
-         break;
 
       case 0x09: case 0x0B: case 0x0F: case 0x12: case 0x13:  //EPROM Memory Bank
          return getBankDescriptionEPROM(bank,SNum);
-         break;
 
       case 0x37: case 0x77:
          if(bank > 0)
@@ -1413,63 +1409,48 @@ char *owGetName(uchar *SNum)
    {
       case 0x14:
          return "DS1971";
-         break;
 
       case 0x04:
          return "DS1994";
-         break;
 
       case 0x06:
          return "DS1993";
-         break;
 
       case 0x08:
          return "DS1992";
-         break;
 
       case 0x09:
          return "DS1982";
-         break;
 
       case 0x0A:
          return "DS1995";
-         break;
 
       case 0x0B:
          return "DS1985";
-         break;
 
       case 0x0C:
          return "DS1996";
-         break;
 
       case 0x18:
          return "DS1963S";
-         break;
 
       case 0x1A:
          return "DS1963L";
-         break;
 
       case 0x1D:
          return "DS2423";
-         break;
 
       case 0x23:
          return "DS1973";
-         break;
 
       case 0x2D:
          return "DS2431";
-         break;
 
       case 0x33: case 0xB3:
          return "DS1961S";
-         break;
 
       case 0x37: case 0x77:
          return "DS1977";
-         break;
 
       default:
          return "No Name";
@@ -1493,35 +1474,27 @@ char *owGetAlternateName(uchar *SNum)
    {
       case 0x14:
          return "DS2430A";
-         break;
 
       case 0x04:
          return "DS2404, Time-in-a-can, DS1427";
-         break;
 
       case 0x09:
          return "DS2502";
-         break;
 
       case 0x0B:
          return "DS2505";
-         break;
 
       case 0x18:
          return "SHA-1 iButton";
-         break;
 
       case 0x1A:
          return "Monetary iButton";
-         break;
 
       case 0x23:
          return "DS2433";
-         break;
 
       case 0x33: case 0xB3:
          return "DS2432";
-         break;
 
       default:
          return "No Alternate Name";
@@ -1544,23 +1517,19 @@ char *owGetDescription(uchar *SNum)
          return "Electrically Erasable Programmable Read Only Memory\n"
                 "*\t(EEPROM) organized as one page of 256 bits and 64 bit\n"
                 "*\tone-time programmable application register.";
-         break;
 
       case 0x04:
          return "4096 bit read/write nonvolatile memory partitioned\n"
                 "*\tinto sixteen pages of 256 bits each and a real\n"
                 "*\ttime clock/calendar in binary format.";
-         break;
 
       case 0x06:
          return "4096 bit read/write nonvolatile memory partitioned\n"
                 "*\tinto sixteen pages of 256 bits each.";
-         break;
 
       case 0x08:
          return "1024 bit read/write nonvolatile memory partitioned\n"
                 "*\tinto four pages of 256 bits each.";
-         break;
 
       case 0x09:
          return "1024 bit Electrically Programmable Read Only Memory\n"
@@ -1569,12 +1538,10 @@ char *owGetDescription(uchar *SNum)
                 "*\tto prevent tampering.  Architecture allows software\n"
                 "*\tto patch data by supersending a used page in favor of\n"
                 "*\ta newly programmed page.";
-         break;
 
       case 0x0A:
          return "16384 bit read/write nonvolatile memory partitioned\n"
                 "*\tinto sixty-four pages of 256 bits each.";
-         break;
 
       case 0x0B:
          return "16384 bit Electrically Programmable Read Only Memory\n"
@@ -1583,26 +1550,22 @@ char *owGetDescription(uchar *SNum)
                 "*\tto prevent tampering.  Architecture allows software\n"
                 "*\tto patch data by supersending a used page in favor of\n"
                 "*\ta newly programmed page.\n";
-         break;
 
       case 0x0C:
          return "65536 bit read/write nonvolatile memory partitioned\n"
                 "*\tinto two-hundred fifty-six pages of 256 bits each.";
-         break;
 
       case 0x18:
          return "4096 bits of read/write nonvolatile memory. Memory\n"
                 "*\tis partitioned into sixteen pages of 256 bits each.\n"
                 "*\tHas overdrive mode.  One-chip 512-bit SHA-1 engine\n"
                 "*\tand secret storage.\n";
-         break;
 
       case 0x1A:
          return "4096 bit read/write nonvolatile memory with\n"
                 "*\tfour 32-bit read-only non rolling-over page write\n"
                 "*\tcycle counters and tamper-detect bits for small\n"
                 "*\tmoney storage.\n";
-         break;
 
       case 0x1D:
          return "1-Wire counter with 4096 bits of read/write, nonvolatile\n"
@@ -1612,26 +1575,21 @@ char *owGetDescription(uchar *SNum)
                 "*\t32 bit read-only non rolling-over counter.  The first two\n"
                 "*\tcounters increment on a page write cycle and the second two\n"
                 "*\thave active-low external triggers.\n";
-         break;
 
       case 0x23:
          return "4096 bit Electrically Erasable Programmable Read\n"
                 "*\tOnly Memory (EEPROM) organized as sixteen pages of 256 bits.";
-         break;
 
       case 0x2D:
          return "1024 bit EEPROM memory with options to put each page\n"
                 "into EPROM mode.";
-         break;
 
       case 0x33: case 0xB3:
          return "1K-Bit protected 1-Wire EEPROM with SHA-1 Engine.";
-         break;
 
       case 0x37: case 0x77:
          return "32Kbyte EEPROM with read-only password and full\n"
                 "*\taccess password.";
-         break;
 
       default:
          return "No given description";
@@ -2397,15 +2355,12 @@ char *owGetExtraInfoDesc(SMALLINT bank, uchar *SNum)
 
       case 0x33: case 0xB3:  //SHAEE Memory Bank
          return getExtraInfoDescSHAEE(bank,SNum);
-         break;
 
       case 0x2D:  //DS2431 Memory Bank
          return getExtraInfoDescEEWP(bank,SNum);
-         break;
 
       case 0x09: case 0x0B: case 0x0F: case 0x12: case 0x13:  //EPROM Memory Bank
          return getExtraInfoDescEPROM(bank,SNum);
-         break;
 
       case 0x37: case 0x77:
          if(bank > 0)

@@ -706,30 +706,22 @@ char *getBankDescriptionEEWP(SMALLINT bank, uchar *SNum)
    {
       case 0:
          return "Page Zero with EPROM mode.";
-         break;
-   
+
       case 1:
          return "Page One with EPROM mode";
-         break;
 
       case 2:
          return "Page Two with EPROM mode.";
-         break;
 
       case 3:
          return "Page Three with EPROM mode.";
-         break;
 
       case 4:
          return "Status Page that contains the secret and the status.";
-         break;
 
       default:
          return bankDescriptionEEWP;
-         break;
    }
-   
-   return bankDescriptionEEWP;
 }
 
 /**
@@ -1177,13 +1169,8 @@ SMALLINT copySpadWP(int portnum, int addr, uchar *SNum, uchar *extra_buf, uchar 
          return FALSE;
       }
    }
-   else
-   {
-      OWERROR(OWERROR_DEVICE_SELECT_FAIL);
-      return FALSE;
-   }
 
-
+   OWERROR(OWERROR_DEVICE_SELECT_FAIL);
    return FALSE;
 }
 
@@ -1247,12 +1234,9 @@ SMALLINT readSpadWP(int portnum, ushort *addr, uchar *es, uchar *data)
          return FALSE;
       }
    }
-   else
-   {
-      OWERROR(OWERROR_DEVICE_SELECT_FAIL);
-      return FALSE;
-   }
 
+   OWERROR(OWERROR_DEVICE_SELECT_FAIL);
    return FALSE;
+
 }
 

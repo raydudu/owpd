@@ -31,24 +31,15 @@
 // Include files
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 #include "ownet.h"
 #include "swt12.h"
+#include "findtype.h"
 
 // Constant definition
 #define SWITCH_FAMILY      0x12
 #define MAXDEVICES         15
 
 // External subroutines
-extern int SetSwitch12(int,uchar *,SwitchProps);
-extern int SwitchStateToString12(int,char *);
-extern SMALLINT owAccess(int);
-extern SMALLINT owAcquire(int,char *);
-extern void owRelease(int);
-extern void owSerialNum(int,uchar *,SMALLINT);
-extern SMALLINT FindDevices(int,uchar FamilySN[][8],SMALLINT,SMALLINT);
-extern void msDelay(int);
-extern int EnterNum(char *,int,long *,long,long);
 
 //---------------------------------------------------------------------------
 // The main program that performs the operations on switches
@@ -80,7 +71,7 @@ int main(int argc, char **argv)
    {
       printf("1-Wire Net name required on command line!\n"
              " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-             "(Linux DS2480),\"1\" (Win32 TMEX)\n");
+             "(Linux DS2480),\"1\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       exit(1);
    }
 
@@ -218,7 +209,6 @@ int main(int argc, char **argv)
    //One Wire Access
    owRelease(portnum);
    printf("Closing port %s.\n", argv[1]);
-   exit(0);
 
    return 0;
 }

@@ -32,7 +32,6 @@
 // Include Files
 #include "ownet.h"
 #include "mbscrx77.h"
-#include "pw77.h"
 
 // general command defines 
 #define WRITE_SCRATCHPAD_COMMAND_EX  0x0F

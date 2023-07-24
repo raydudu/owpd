@@ -60,7 +60,6 @@ static uchar dscrc_table[] = {
 void setcrc16(int portnum, ushort reset)
 {
    utilcrc16[portnum&0x0FF] = reset;
-   return;
 }
 
 //--------------------------------------------------------------------------
@@ -73,7 +72,6 @@ void setcrc16(int portnum, ushort reset)
 void setcrc8(int portnum, uchar reset)
 {
    utilcrc8[portnum&0x0FF] = reset;
-   return;
 }
 
 //--------------------------------------------------------------------------

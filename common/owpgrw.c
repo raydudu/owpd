@@ -60,12 +60,11 @@ SMALLINT Read_Page(int portnum, uchar *SNum, uchar *buff, uchar flag,
 	SMALLINT  bank;
 	PAGE_TYPE page;
    int       jobopen = FALSE;
-   int       cnt = 0;
+   int       cnt ;
 	uchar     extra[3],space;
 	uchar     temp_buff[32];
 	uchar     rd_buf[2];
-   uchar     addpg;
-   int       i;	
+   int       i;
 
 	
    // Are program jobs possible
@@ -132,7 +131,7 @@ SMALLINT Read_Page(int portnum, uchar *SNum, uchar *buff, uchar flag,
          if(extra[0] != 0xFF)
          {
       	   rd_buf[0] = ~extra[0];
-      		addpg = AddPage(portnum,SNum,*pg,&rd_buf[0],STATUSMEM);
+      		 AddPage(portnum,SNum,*pg,&rd_buf[0],STATUSMEM);
       		*pg = (PAGE_TYPE) rd_buf[0];      
             continue;
          }
@@ -141,7 +140,7 @@ SMALLINT Read_Page(int portnum, uchar *SNum, uchar *buff, uchar flag,
             *len = 8;
             for(i=0;i<*len;i++)
                buff[i] = temp_buff[i];
-            addpg = AddPage(portnum,SNum,*pg,&buff[0],STATUSMEM);
+               AddPage(portnum,SNum,*pg,&buff[0],STATUSMEM);
 //  		   	   AddPage(portnum,SNum,*pg,&buff[0],*len);
 //               AddPage(portnum,SNum,*pg,&buff[0],0x41);
             return TRUE;
@@ -180,7 +179,7 @@ SMALLINT Read_Page(int portnum, uchar *SNum, uchar *buff, uchar flag,
          if(extra[0] != 0xFF)
          {
          	rd_buf[0] = ~extra[0];
-      		addpg = AddPage(portnum,SNum,*pg,&rd_buf[0],REDIRMEM);
+      		AddPage(portnum,SNum,*pg,&rd_buf[0],REDIRMEM);
       		*pg = (PAGE_TYPE) rd_buf[0];  
             continue;
          }
@@ -210,7 +209,7 @@ SMALLINT Read_Page(int portnum, uchar *SNum, uchar *buff, uchar flag,
                *len = temp_buff[0];
             }
 
-            addpg = AddPage(portnum,SNum,*pg,&buff[0],*len);
+            AddPage(portnum,SNum,*pg,&buff[0],*len);
             return TRUE;
          }
     	}

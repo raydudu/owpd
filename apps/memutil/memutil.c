@@ -30,7 +30,6 @@
 
 #define DEBUG 1
 #include <stdio.h>
-#include <ctype.h>
 #include "ownet.h"
 #include "rawmem.h"
 #include "mbshaee.h"
@@ -102,7 +101,7 @@ int main(int argc, char **argv)
    uchar AllSN[MAXDEVICES][8];
    int NumDevices;
    int owd;
-   char msg[132];
+   char msg[192];
 
 
       // check for required port name
@@ -110,7 +109,7 @@ int main(int argc, char **argv)
    {
       sprintf(msg,"1-Wire Net name required on command line!\n"
                   " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-                  "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+                  "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       printf("%s\n",msg);
       return 0;
    }

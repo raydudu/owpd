@@ -36,20 +36,6 @@
 #include "mbscrcrc.h"
 #include "mbsha.h"
 
-// External functions
-extern SMALLINT owBlock(int,int,uchar *,int);
-extern SMALLINT owReadByte(int);
-extern SMALLINT owWriteByte(int,int);
-extern void     output_status(int, char *);
-extern void     msDelay(int);
-extern void     owSerialNum(int,uchar *,int);
-extern SMALLINT owAccess(int);
-extern SMALLINT owWriteByte(int,int);
-extern void     setcrc16(int,ushort);
-extern ushort   docrc16(int,ushort);
-extern SMALLINT owWriteBytePower(int,int);
-extern SMALLINT owLevel(int,int);
-
 // General command defines
 #define READ_MEMORY_COMMAND      0xF0
 #define WRITE_SCRATCHPAD_COMMAND 0x0F
@@ -366,7 +352,6 @@ SMALLINT readPageExtraCRCScratch(SMALLINT bank, int portnum, uchar *SNum, int pa
       default:
          OWERROR(OWERROR_CRC_EXTRA_INFO_NOT_SUPPORTED);
          return FALSE;
-         break;
    }
 
    return TRUE;
@@ -398,7 +383,6 @@ SMALLINT readPageCRCScratch(SMALLINT bank, int portnum, uchar *SNum, int page, u
       default:
          OWERROR(OWERROR_CRC_NOT_SUPPORTED);
          return FALSE;
-         break;
    }
 
    return TRUE;
@@ -678,22 +662,16 @@ char *getBankDescriptionScratch(SMALLINT bank, uchar *SNum)
    {
       case 0x18:
          return getBankDescriptionScratchSHA(bank,SNum);
-         break;
 
       case 0x1A: case 0x1D:
          return getBankDescriptionScratchEx(bank,SNum);
-         break;
 
       case 0x23:
          return getBankDescriptionScratchCRC(bank,SNum);
-         break;
 
       default:
          return bankDescriptionSCR;
-         break;
    }
-
-   return "No description given.";
 }
 
 /**

@@ -48,16 +48,12 @@ int getNumber (int min, int max);
 int main(int argc, char **argv)
 {
    int i,j,n;                      //loop counters
-   short test=0;                   //info byte data
-   short clear=0;                  //used to clear the button
    uchar SwitchSN[8];              //the serial numbers for the devices
    uchar send_block[10];
    short done = FALSE;             //used to indicate the end of the input loop from user
    int portnum=0;
    SMALLINT setA,setB;
    long errorcnt = 0;
-   long cntA = 0;
-   long cntB = 0;
    uchar state,read;
    int send_cnt;
 
@@ -74,7 +70,7 @@ int main(int argc, char **argv)
    {
       printf("1-Wire Net name required on command line!\n"
              " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-             "(Linux DS2480),\"{1,5}\" (Win32 TMEX)\n");
+             "(Linux DS2480),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       exit(1);
    }
 
@@ -146,7 +142,7 @@ int main(int argc, char **argv)
             {
                state = 0xFE;
             }
-            else if(!setA & setB)
+            else if((!setA) & setB)
             {
                state = 0xFD;
             }
@@ -175,7 +171,7 @@ int main(int argc, char **argv)
                   if(read != 0xF0)
                   {
                      errorcnt++;
-                     printf("The error count is %d\n",errorcnt);
+                     printf("The error count is %ld\n",errorcnt);
                   }
                }
 
@@ -186,7 +182,7 @@ int main(int argc, char **argv)
                   if(read != 0xD2)
                   {
                      errorcnt++;
-                     printf("The error count is %d\n",errorcnt);
+                     printf("The error count is %ld\n",errorcnt);
                   }
                }
 
@@ -197,7 +193,7 @@ int main(int argc, char **argv)
                   if(read != 0x78)
                   {
                      errorcnt++;
-                     printf("The error count is %d\n",errorcnt);
+                     printf("The error count is %ld\n",errorcnt);
                   }
                }
 
@@ -208,7 +204,7 @@ int main(int argc, char **argv)
                   if(read != 0x0F)
                   {
                      errorcnt++;
-                     printf("The error count is %d\n",errorcnt);
+                     printf("The error count is %ld\n",errorcnt);
                   }
                }
             }while(errorcnt < 100000000);

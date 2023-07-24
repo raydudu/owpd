@@ -4,7 +4,7 @@ project(owpd310r2 LANGUAGES C VERSION 3.10.2)
 set(CMAKE_C_STANDARD 17)
 
 add_subdirectory(common)
-set(W1_MASTER_LIB "usbds2490" CACHE STRING "What Universal Serial 1-Wire Line Driver Master chip to use")
+set(W1_MASTER_LIB "usbds2490" CACHE STRING "What 'Universal Serial 1-Wire Line Driver Master chip' interface implementation to use")
 set_property(CACHE W1_MASTER_LIB PROPERTY STRINGS "usbds2490" "userail")
 
 if (W1_MASTER_LIB STREQUAL "usbds2490")

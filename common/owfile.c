@@ -1609,7 +1609,7 @@ SMALLINT owNextFile(int portnum, uchar *SNum, FileEntry *FE)
    	return FALSE;
 
    // check to see if the directory is valid
-   pg = (CD.ne == 0) ? 0 : CD.Entry[CD.ne-1].page;;
+   pg = (CD.ne == 0) ? 0 : CD.Entry[CD.ne-1].page;
 
    // check to see if in a sub-directory, if yes and LastFile = 1 then return '..'
    if ((CD.ne > 0) && (LastFile == 1))
@@ -1748,7 +1748,7 @@ SMALLINT owChangeDirectory(int portnum, uchar *SNum, DirectoryPath *CDBuf)
          }
       }
       // check for non-current reference
-      else if (!(CDBuf->Entries[i][0] == '.')) //)
+      else if (CDBuf->Entries[i][0] != '.') //)
       {
          // add the forward reference to TCD
          for (j = 0; j < 4; j++)
@@ -1840,7 +1840,7 @@ SMALLINT owCreateFile(int portnum, uchar *SNum, int *maxwrite, short *hnd,
    }
 
    // check for special case of extension 101
-   if ((flname->Ext == 101) && ((SNum[0] != 0x1A) || (SNum[0] != 0x1C) ||
+   if ((flname->Ext == 101) && ((SNum[0] != 0x1A) && (SNum[0] != 0x1C) ||
    									  (SNum[0] != 0x1D)))
    {
    	OWERROR(OWERROR_WRONG_TYPE);

@@ -51,7 +51,7 @@ int ReadTemperature(int portnum, uchar *SerialNum, float *Temp)
 {
    uchar rt=FALSE;
    uchar send_block[30],lastcrc8;
-   int send_cnt, tsht, i, loop=0;
+   int send_cnt, tsht, i, loop;
    float tmp,cr,cpc;
 
    // set the device serial number to the counter device

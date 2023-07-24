@@ -42,8 +42,7 @@ extern struct usb_dev_handle *usb_dev_handle_list[MAX_PORTNUM];
 // global DS2490 state
 SMALLINT USBLevel[MAX_PORTNUM]; 
 SMALLINT USBSpeed[MAX_PORTNUM]; 
-SMALLINT USBVersion[MAX_PORTNUM]; 
-SMALLINT USBVpp[MAX_PORTNUM]; 
+SMALLINT USBVpp[MAX_PORTNUM];
 
 //---------------------------------------------------------------------------
 // Attempt to resync and detect a DS2490
@@ -56,7 +55,7 @@ SMALLINT USBVpp[MAX_PORTNUM];
 //
 SMALLINT DS2490Detect(usb_dev_handle *hDevice)
 {
-   SMALLINT present,vpp,ret;
+   SMALLINT present,vpp;
    SETUP_PACKET setup;
 
    // reset the DS2490
@@ -70,7 +69,7 @@ SMALLINT DS2490Detect(usb_dev_handle *hDevice)
    setup.Length = 0;
    setup.DataOut = FALSE;
    // call the libusb driver
-   ret = usb_control_msg(hDevice,
+   usb_control_msg(hDevice,
                          setup.RequestTypeReservedBits,
                          setup.Request,
                          setup.Value,
@@ -87,7 +86,7 @@ SMALLINT DS2490Detect(usb_dev_handle *hDevice)
    setup.Length = 0;
    setup.DataOut = FALSE;
    // call the libusb driver
-   ret = usb_control_msg(hDevice, 
+   usb_control_msg(hDevice,
                          setup.RequestTypeReservedBits, 
                          setup.Request, 
                          setup.Value, 
@@ -104,7 +103,7 @@ SMALLINT DS2490Detect(usb_dev_handle *hDevice)
    setup.Length = 0x00;
    setup.DataOut = FALSE;
    // call the libusb driver
-   ret = usb_control_msg(hDevice, 
+   usb_control_msg(hDevice,
                          setup.RequestTypeReservedBits, 
                          setup.Request, 
                          setup.Value, 
@@ -272,7 +271,7 @@ SMALLINT DS2490HaltPulse(usb_dev_handle *hDevice)
             setup.Length = 0x00;
             setup.DataOut = FALSE;
             // call the libusb driver
-            ret = usb_control_msg(hDevice, 
+            usb_control_msg(hDevice,
 	                          setup.RequestTypeReservedBits, 
    	    			  setup.Request, 
    				  setup.Value, 
@@ -301,9 +300,9 @@ SMALLINT DS2490HaltPulse(usb_dev_handle *hDevice)
 SMALLINT DS2490GetStatus(usb_dev_handle *hDevice, STATUS_PACKET *status, uchar *pResultSize)
 {
    // buffer to retrieve status
-   uchar buffer[32];
-   SMALLINT i = 0;
-   SMALLINT bufferlength = 0;
+   char buffer[32];
+   SMALLINT i;
+   SMALLINT bufferlength;
 
    // initialize buffer
    memset(&buffer[0],0x00,32);
@@ -361,7 +360,7 @@ SMALLINT DS2490GetStatus(usb_dev_handle *hDevice, STATUS_PACKET *status, uchar *
 SMALLINT DS2490Reset(usb_dev_handle *hDevice)
 {
    SETUP_PACKET setup;
-   SMALLINT ret = 0;
+   SMALLINT ret;
 
    // setup for reset
    setup.RequestTypeReservedBits = 0x40;
@@ -400,12 +399,12 @@ SMALLINT DS2490Read(usb_dev_handle *hDevice, uchar *buffer, ushort *pnBytes)
 
    // Synchronous read:
    SMALLINT numOfBytesToRead = *pnBytes;
-	int nBytes = 0;
+	int nBytes;
 
    // read
    nBytes = usb_bulk_read(hDevice,         // handle
-	 	           DS2490_EP3,      // which endpoint to read from
-			   buffer,          // buffer to contain read results
+               DS2490_EP3,      // which endpoint to read from
+               (char *)buffer,          // buffer to contain read results
 			   numOfBytesToRead,        // number of bytes to read 
 			   TIMEOUT_LIBUSB); // libusb timeout
 
@@ -429,13 +428,13 @@ SMALLINT DS2490Write(usb_dev_handle *hDevice, uchar *buffer, ushort *pnBytes)
 {
    // Synchronous write:
    // assume enough room for write
-   int	nBytes = 0;
+   int	nBytes;
    int numOfBytesToRead = *pnBytes;
 
    // write
    nBytes = usb_bulk_write(hDevice,         // handle
-		           DS2490_EP2,      // which endpoint to write
-			   buffer,          // buffer to write to endpoint
+               DS2490_EP2,      // which endpoint to write
+               (char *)buffer,          // buffer to write to endpoint
 			   numOfBytesToRead,        // number of bytes to write
 			   TIMEOUT_LIBUSB); // libusb timeout
    

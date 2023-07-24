@@ -30,32 +30,32 @@
 /**
  * DS1991 Write Scratchpad Command
  */
-#define WRITE_SCRATCHPAD_COMMAND  0x96;
+#define WRITE_SCRATCHPAD_COMMAND  0x96
 
 /**
  * DS1991 Read Scratchpad Command
  */
-#define READ_SCRATCHPAD_COMMAND  0x69;
+#define READ_SCRATCHPAD_COMMAND  0x69
 
 /**
  * DS1991 Copy Scratchpad Command
  */
-#define COPY_SCRATCHPAD_COMMAND  0x3C;
+#define COPY_SCRATCHPAD_COMMAND  0x3C
 
 /**
  * DS1991 Write Password Command
  */
-#define WRITE_PASSWORD_COMMAND  0x5A;
+#define WRITE_PASSWORD_COMMAND  0x5A
 
 /**
  * DS1991 Write SubKey Command
  */
-#define WRITE_SUBKEY_COMMAND  0x99;
+#define WRITE_SUBKEY_COMMAND  0x99
 
 /**
  * DS1991 Read SubKey Command
  */
-#define READ_SUBKEY_COMMAND  0x66;
+#define READ_SUBKEY_COMMAND  0x66
 
 
 // functions

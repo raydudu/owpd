@@ -89,7 +89,7 @@ int main(int argc, char **argv)
    uchar AllSN[MAXDEVICES][8];
    int NumDevices;
    int owd = 0;
-   char msg[132];
+   char msg[192];
    char dirname[64];
    char answer[4];
    char num[4];
@@ -104,7 +104,7 @@ int main(int argc, char **argv)
    {
       sprintf(msg,"1-Wire Net name required on command line!\n"
                   " (example: \"COM1\" (Win32 DS2480D),\"/dev/cua0\" "
-                  "(Linux DS2480D),\"{1,5}\" (Win32 TMEX)\n");
+                  "(Linux DS2480D),\"{1,5}\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       printf("%s\n",msg);
       return 0;
    }
@@ -1554,6 +1554,7 @@ int menuSelect(int menu)
 
    switch(menu)
    {
+      default:
       case MAIN_MENU:
          printf("\n");
          printf("----  1-Wire File Shell ----\n");
@@ -1639,7 +1640,7 @@ int getNumber (int min, int max)
 int getString(char *write_buff)
 {
    char ch;
-   int  cnt = 0, temp_cnt = 0;
+   int  cnt = 0;
    int  done = FALSE;
 
    do

@@ -30,7 +30,6 @@
 //  History:
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 #include "ownet.h"
 #include "findtype.h"
 #include "swt1C.h"
@@ -42,7 +41,6 @@
 #define MAX_LEN            256
 
 // globals
-long time_stamp;
 // verbose output mode
 int VERBOSE=0;
 
@@ -77,14 +75,14 @@ int main(int argc, char **argv)
    {
       sprintf(msg,"1-Wire Net name required on command line!\n"
                   " (example: \"COM1\" (Win32 DS2480),\"/dev/cua0\" "
-                  "(Linux DS2480),\"1\" (Win32 TMEX)\n");
+                  "(Linux DS2480),\"1\" (Win32 TMEX), DS2490-1 (DS2490 USB)\n");
       printf("%s",msg);
       return 0;
    }
 
    if((portnum = owAcquireEx(argv[1])) < 0)
    {
-      printf("Did not Acquire port.\n",1);
+      printf("Did not Acquire port.\n");
       exit(1);
    }
    else

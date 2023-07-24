@@ -212,14 +212,14 @@ extern int owHasErrors(void);
    //Raises an exception with just the error code
    #define OWERROR(err) owRaiseError(err)
    extern void owRaiseError(int);
-   #define OWASSERT(s,err,ret) if(!(s)){owRaiseError((err));return (ret);}
+   #define OWASSERT(s,err,ret) if(!(s)){owRaiseError((err));return (ret);} (void)0
 #endif
 
 #ifdef SMALL_MEMORY_TARGET
    #define OWERROR_DUMP(fileno) /*no-op*/;
 #else
    //Prints the stack out to the given file.
-   #define OWERROR_DUMP(fileno) while(owHasErrors()) owPrintErrorMsg(fileno);
+   #define OWERROR_DUMP(fileno) while(owHasErrors()) owPrintErrorMsg(fileno)
    extern void owPrintErrorMsg(FILE *);
    extern void owPrintErrorMsgStd();
    extern char *owGetErrorMsg(int);

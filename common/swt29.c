@@ -380,7 +380,7 @@ SMALLINT setChannelPolarity(int portnum, uchar *SNum, int channel, SMALLINT seto
    uchar reg[3];
    uchar polarity;
 
-   polarity = (uchar) (0x01 << channel);;
+   polarity = (uchar) (0x01 << channel);
 
    if(!readRegister29(portnum,SNum,&reg[0]))
       return FALSE;
