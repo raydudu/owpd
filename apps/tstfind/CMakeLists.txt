@@ -4,7 +4,11 @@ project(tstfind LANGUAGES C)
 if (W1_HW STREQUAL "DS87C550")
     add_executable(tstfindm tstfindm.c)
     target_link_libraries(tstfindm PRIVATE w1)
+
+    install(TARGETS tstfindm)
 endif ()
 
 add_executable(tstfind tstfind.c)
 target_link_libraries(tstfind PRIVATE w1)
+
+install(TARGETS tstfind)

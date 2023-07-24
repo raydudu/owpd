@@ -6,3 +6,5 @@ target_link_libraries(swtloop PRIVATE w1)
 
 add_executable(swtoper swtoper.c)
 target_link_libraries(swtoper PRIVATE w1)
+
+install(TARGETS swtoper swtloop)

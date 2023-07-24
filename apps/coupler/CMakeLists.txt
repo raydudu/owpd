@@ -3,3 +3,5 @@ project(coupler LANGUAGES C)
 
 add_executable(coupler coupler.c)
 target_link_libraries(coupler PRIVATE w1)
+
+install(TARGETS coupler)

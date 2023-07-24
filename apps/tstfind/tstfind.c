@@ -41,6 +41,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "ownet.h"
 
 //----------------------------------------------------------------------
@@ -98,7 +99,7 @@ int main(int argc, char **argv)
          rslt = owNext(portnum, TRUE, FALSE);
       }
       printf("-------------------- End of search\n\n");
-
+      sleep(1);
    }
    while (!key_abort());
 

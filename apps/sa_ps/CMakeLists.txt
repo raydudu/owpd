@@ -6,3 +6,5 @@ target_link_libraries(ps_check PRIVATE w1)
 
 add_executable(ps_init ps_init.c)
 target_link_libraries(ps_init PRIVATE w1)
+
+install(TARGETS ps_init ps_check)

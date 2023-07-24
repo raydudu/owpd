@@ -3,3 +3,5 @@ project(swtmulti LANGUAGES C)
 
 add_executable(swtmulti swtmulti.c)
 target_link_libraries(swtmulti PRIVATE w1)
+
+install(TARGETS swtmulti)

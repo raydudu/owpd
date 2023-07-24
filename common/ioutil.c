@@ -457,10 +457,12 @@ void PrintChars(uchar* buffer, int cnt)
 void PrintSerialNum(uchar* buffer)
 {
    int i;
-   for(i=7; i>=0; i--)
+   for(i=7; i>=1; i--)
    {
       printf("%02X", buffer[i]);
    }
+   printf(".%02X", buffer[0]);
+
 }
 
 

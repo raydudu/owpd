@@ -3,3 +3,5 @@ project(shaapp LANGUAGES C)
 
 add_executable(shaapp shaapp.c)
 target_link_libraries(shaapp PRIVATE w1)
+
+install(TARGETS shaapp)

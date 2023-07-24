@@ -9,3 +9,5 @@ target_link_libraries(shademo PRIVATE w1)
 
 add_executable(sharov sharov.c)
 target_link_libraries(sharov PRIVATE w1)
+
+install(TARGETS sharov shademo shacopr)

@@ -6,3 +6,5 @@ target_link_libraries(tm_check PRIVATE w1)
 
 add_executable(tm_init tm_init.c)
 target_link_libraries(tm_init PRIVATE w1)
+
+install(TARGETS tm_init tm_check)

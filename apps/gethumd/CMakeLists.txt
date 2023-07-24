@@ -3,3 +3,5 @@ project(gethumd LANGUAGES C)
 
 add_executable(gethumd gethumd.c)
 target_link_libraries(gethumd PRIVATE w1)
+
+install(TARGETS gethumd)

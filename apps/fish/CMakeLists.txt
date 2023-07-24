@@ -3,3 +3,5 @@ project(fish LANGUAGES C)
 
 add_executable(fish fish.c)
 target_link_libraries(fish PRIVATE w1)
+
+install(TARGETS fish)

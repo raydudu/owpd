@@ -3,3 +3,5 @@ project(humalog LANGUAGES C)
 
 add_executable(humalog humalog.c)
 target_link_libraries(humalog PRIVATE w1)
+
+install(TARGETS humalog)
